@@ -1,0 +1,45 @@
+Project: Galactic Identification System
+Tool Used: Google Colab AI / Gemini
+
+--- PROMPT LOG ---
+
+CELL 1: DATA LOADING
+"Write Python code to import pandas and requests. We need to load Star Wars scripts from these raw URLs:
+1. https://raw.githubusercontent.com/kamran786/Star-Wars-Movie-Scripts-Text-Analysis/master/SW_EpisodeIV.txt
+2. https://raw.githubusercontent.com/kamran786/Star-Wars-Movie-Scripts-Text-Analysis/master/SW_EpisodeV.txt
+3. https://raw.githubusercontent.com/kamran786/Star-Wars-Movie-Scripts-Text-Analysis/master/SW_EpisodeVI.txt
+
+Important: Do NOT use pd.read_csv because the files have inconsistent spacing. Instead, use requests to download the text, split it by line, remove all quote characters, and then manually split each line into [Line Number, Character, Dialogue]. Combine all data into a DataFrame and print the head."
+
+CELL 2: PREPROCESSING & UNIT TEST
+"Write Python code to preprocess the text.
+1. Import re, nltk, and unittest.
+2. Download 'stopwords' and 'punkt' from nltk.
+3. Create a function preprocess_text(text) that:
+   - Converts text to lowercase.
+   - Removes special characters (keeping only letters).
+   - Removes stopwords and uses PorterStemmer.
+4. Create a unittest.TestCase class to test that the input 'I am your Father!' correctly transforms into 'father'.
+5. Run the unit test. If it passes, apply the function to the 'dialogue' column."
+
+CELL 3: VISUALIZATION (EDA)
+"Write code to perform Exploratory Data Analysis.
+1. Filter the DataFrame to keep only the Top 10 characters with the most lines.
+2. Use seaborn to create a Bar Plot of these top 10 characters and their line counts.
+3. Print the names of the top 10 characters."
+
+CELL 4: WORD CLOUDS
+"Write code to generate Word Clouds using the wordcloud library. Create a function that filters the data for a specific character and generates a word cloud from their dialogue. Generate clouds for YODA, VADER, and HAN."
+
+CELL 5: MODEL TRAINING
+"Write Python code to train a Machine Learning model.
+1. Import train_test_split, TfidfVectorizer, and LogisticRegression.
+2. Split the filtered data (Top 10 characters) into training (80%) and testing (20%) sets using random_state=42.
+3. Vectorize the text using TfidfVectorizer.
+4. Train a LogisticRegression model and print the accuracy score."
+
+CELL 6: EVALUATION
+"Write Python code to evaluate the model. Generate a classification report and a Confusion Matrix using seaborn heatmap to show where the model confuses characters."
+
+CELL 7: DEMO APPLICATION
+"Create a demo application function predict_character(text) that takes a raw string, cleans it, vectorizes it (using the existing vectorizer), and predicts the character. Test it with custom quotes like 'I have a bad feeling about this' and 'The dark side is strong'."
